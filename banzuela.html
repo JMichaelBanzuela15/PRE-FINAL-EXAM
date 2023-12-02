@@ -2,54 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PREFINALS EXAM</title>
+    <title>Document</title>
 </head>
 <body>
-    <h2>Enter any number:</h2>
-    <input type="text" id="userInput">
-    <button onclick="identifyNumbers()">check</button>
-
-    <h3>results:</h3>
-    <p id="primeResult"></p>
-    <p id="oddNumbers"></p>
-    <p id="evenNumbers"></p>
+    <label>First Name:</label><br>
+    <input type="text" id="fname"><br>
+    <label>Last Name:</label><br>
+    <input type="text" id="lname"><br>
+    <label>Age:</label><br>
+    <input type="number" id="age"><br>
+    <label>Gender:</label><br>
+    <input type="text" id="gender"><br>
+    <label>Birthdate</label><br>
+    <input type="date" id="birthdate"><br>
+    <label>Address</label><br>
+    <input type="text" id="address"><br>
+    <label>Email Address</label><br>
+    <input type="text" id="email"><br><br>
+    <input type="submit" value="Submit" onclick="input()">
 
     <script>
-        function isPrime(num) {
-            if (num <= 1) return false;
-            for (let i = 2; i <= Math.sqrt(num); i++) {
-                if (num % i === 0) {
-                    return false;
-                }
-            }
-            return true;
-        }
+        
+        function input() {
+        const student = {
+            fname: document.getElementById("fname").value,
+            lname: document.getElementById("lname").value,
+            age: document.getElementById("age").value,
+            gender: document.getElementById("gender").value,
+            birthdate: document.getElementById("birthdate").value,
+            address: document.getElementById("address").value,
+            email: document.getElementById("email").value,
 
-        function identifyNumbers() {
-            const userInput = document.getElementById("userInput").value;
-            const numbers = userInput.split(',').map(Number);
+        show: function () {
+            console.log(this.fname + ' ' + this.lname + ' ' + this.age + ' ' + this.gender + ' ' + this.birthdate + ' ' + this.address + ' ' + this.email);
+        },
+    };
 
-            let primeResult = "";
-            let oddNumbers = [];
-            let evenNumbers = [];
-
-            numbers.forEach(num => {
-                if (isPrime(num)) {
-                    primeResult += num + " is a prime number<br>";
-                }
-                if (num % 2 === 0) {
-                    evenNumbers.push(num);
-                } else {
-                    oddNumbers.push(num);
-                }
-            });
-
-            document.getElementById("primeResult").innerHTML = primeResult;
-            document.getElementById("oddNumbers").innerHTML = "Odd Numbers: " + oddNumbers.join(", ");
-            document.getElementById("evenNumbers").innerHTML = "Even Numbers: " + evenNumbers.join(", ");
-        }
+    student.show();
+}
     </script>
 </body>
 </html>
